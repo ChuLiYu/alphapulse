@@ -47,4 +47,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r infra/local/requirements-test.txt
-      - run: PYTHONPATH=src python -m unittest discover -s tests/security -v
+      - run: PYTHONPATH=src:airflow/plugins python -m pytest tests/security -v

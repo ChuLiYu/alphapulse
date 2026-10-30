@@ -1,104 +1,13 @@
-# Security Policy
+# Security boundaries
 
-## Supported Versions
+Status: required controls for the target architecture, plus the existing selected security baseline. [Existing agent review](agents/SECURITY_REVIEW.md) and [security remediation evidence](local/SECURITY_REMEDIATION.zh-TW.md) retain their original limits.
 
-We actively maintain and provide security updates for the following versions:
+Financial correctness, access control and audit integrity are release properties. Portfolio records require server-side portfolio grants as well as action permissions. A user cannot approve their own proposal. Token role changes/revocation must affect subsequent actions. The existing JWT/global permission implementation does not yet satisfy the portfolio-scoped OIDC target.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+Secrets stay in ignored local settings or a deployment secret manager. Redact tokens, credentials, client data and model source content from logs. Public synthetic examples must be reviewed before publishing. Do not initialize the private submodule or copy personal AI account settings into this repository.
 
-## Reporting a Vulnerability
+AI tool access is read-only and authorized before retrieval; imported documents are untrusted content. [AI governance](ai/governance.md) owns the detailed controls and evaluation. New investment endpoints must fail closed on missing financial evidence and never rely on the legacy frontend's demo response interceptor.
 
-We take the security of AlphaPulse MLOps Platform seriously. If you believe you have found a security vulnerability, please report it to us as described below.
+Cloud deployment, namespace migration and new image publishing require the environment's normal release gate. The rename changes source configuration; it does not certify historical k3s/Terraform settings or transfer existing GHCR packages. [Operations](engineering/operations.md) owns rollout/recovery evidence.
 
-**Please do NOT report security vulnerabilities through public GitHub issues.**
-
-Instead, please report them via email to the maintainers (see contact information in README.md).
-
-### What to Include in Your Report
-
-When reporting a vulnerability, please include:
-
-1. **Description**: A clear description of the vulnerability
-2. **Steps to Reproduce**: Detailed steps to reproduce the issue
-3. **Impact**: The potential impact of the vulnerability
-4. **Suggested Fix**: If you have any suggestions for a fix
-5. **Proof of Concept**: Any proof-of-concept code or screenshots
-
-### Our Commitment
-
-- We will acknowledge receipt of your vulnerability report within 48 hours
-- We will provide a more detailed response within 7 days
-- We will keep you informed about our progress throughout the process
-- We will credit you for the discovery (unless you prefer to remain anonymous)
-
-## Security Best Practices for Users
-
-### 1. Environment Variables
-Never commit sensitive information to version control. Use `.env` files for local development and ensure they are listed in `.gitignore`.
-
-### 2. API Keys and Credentials
-- Store API keys and credentials in environment variables
-- Use `.env.example` as a template for required environment variables
-- Rotate credentials regularly
-- Never hardcode credentials in source code
-
-### 3. Docker Security
-- Use official base images from trusted sources
-- Regularly update Docker images to include security patches
-- Run containers with non-root users when possible
-- Use Docker secrets for sensitive data in production
-
-### 4. Network Security
-- Use HTTPS for all external communications
-- Implement proper firewall rules
-- Restrict network access to sensitive services (PostgreSQL, MinIO, MLflow)
-- Use VPN for accessing development environments
-
-### 5. Data Protection
-- Encrypt sensitive data at rest
-- Use secure connections for database access
-- Implement proper access controls for MinIO/S3 buckets
-- Regularly backup critical data
-
-### 6. Code Security
-- Regularly update dependencies to patch security vulnerabilities
-- Use static analysis tools to detect security issues
-- Implement input validation and sanitization
-- Follow the principle of least privilege
-
-## Security Features in AlphaPulse
-
-### Built-in Security Measures
-1. **Environment-based Configuration**: All sensitive configuration is loaded from environment variables
-2. **Secure Defaults**: Services are configured with secure defaults
-3. **Network Isolation**: Docker Compose services are isolated in their own network
-4. **Authentication**: MinIO and PostgreSQL require authentication
-5. **TLS Support**: Ready for TLS/SSL configuration in production
-
-### Security Monitoring
-- Logging of authentication attempts
-- Monitoring of unusual access patterns
-- Regular security scanning of dependencies
-
-## Dependency Security
-
-We use the following tools to maintain dependency security:
-
-1. **Dependabot**: Automated dependency updates
-2. **Snyk/Security Scanning**: Regular vulnerability scanning
-3. **Renovate**: Dependency management automation
-
-## Responsible Disclosure
-
-We follow responsible disclosure practices. Security researchers who follow these guidelines will be acknowledged for their contributions.
-
-## Contact
-
-For security-related issues, please contact the maintainers via the email listed in the project's README.md file.
-
-## Updates to This Policy
-
-This security policy may be updated periodically. Please check back for the latest version.
+Report a suspected vulnerability privately to the repository maintainer using a private channel supported by the repository; do not post secrets or exploit data in a public issue. No security accreditation is claimed.

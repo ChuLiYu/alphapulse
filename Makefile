@@ -1,5 +1,5 @@
 # ================================================================================
-# AlphaPulse MLOps Platform - Makefile
+# AlphaPulse - Makefile
 # ================================================================================
 # Single entry point for all operations (Maintenance First Principle)
 # All commands use docker-compose from the infra/ directory
@@ -31,7 +31,7 @@ NC     := \033[0m # No Color
 
 help:
 	@echo "$(BLUE)════════════════════════════════════════════════════════════════$(NC)"
-	@echo "$(GREEN)  AlphaPulse MLOps Platform - Command Reference$(NC)"
+	@echo "$(GREEN)  AlphaPulse - Command Reference$(NC)"
 	@echo "$(BLUE)════════════════════════════════════════════════════════════════$(NC)"
 	@echo ""
 	@echo "$(YELLOW)🚀 Quick Start:$(NC)"

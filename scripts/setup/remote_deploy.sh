@@ -58,7 +58,7 @@ if [ -d "$DEPLOY_DIR/.git" ]; then
     git pull origin main
 else
     echo "📥 Cloning repository..."
-    git clone https://github.com/ChuLiYu/alphapulse-mlops-platform.git "$DEPLOY_DIR"
+    git clone https://github.com/ChuLiYu/alphapulse.git "$DEPLOY_DIR"
     cd "$DEPLOY_DIR"
 fi
 

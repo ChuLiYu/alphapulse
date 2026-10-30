@@ -1,61 +1,44 @@
-# Technical Development Guide
+# Development
 
-This document provides a deep dive into the technical implementation and development workflows of the AlphaPulse platform.
+[Context router](INDEX.md) is the entry point. Use English for code-facing documentation; the [Chinese guide](zh-TW/overview.md) is an orientation companion.
 
-## 🔍 Technical Deep Dive
+## Dependency-free domain and context work
 
-### API Endpoint Implementation
+Python 3.12 matches the existing runtime. No package installation is needed for these commands:
 
-#### Health Check (Production Pattern)
-Ensures the system is ready to receive traffic and all dependencies (like DB) are healthy.
-```python
-@router.get("/health", response_model=HealthStatus)
-async def health_check(db: Session = Depends(get_db)):
-    try:
-        db.execute("SELECT 1")
-        return HealthStatus(status="healthy", database="connected", timestamp=datetime.utcnow())
-    except Exception as e:
-        logger.error(f"Health check failed: {e}")
-        raise HTTPException(status_code=503, detail="Database unavailable")
+```sh
+python3 scripts/verify_context.py
+python3 -m unittest discover -s tests/context -v
+PYTHONPATH=src python3 -m unittest discover -s tests/portfolio -v
+PYTHONPATH=src python3 -m alphapulse.portfolio.demo
+PYTHONPATH=src python3 -m unittest discover -s tests/agent_poc -v
 ```
 
-#### Trading Signals (Decimal Precision)
-Uses `Decimal` to ensure financial accuracy.
-```python
-@router.get("/api/v1/signals/{symbol}", response_model=List[TradingSignal])
-async def get_trading_signals(symbol: str, limit: int = Query(10, ge=1, le=100), db: Session = Depends(get_db)):
-    signals = db.query(TradingSignal).filter(TradingSignal.symbol == symbol).order_by(TradingSignal.timestamp.desc()).limit(limit).all()
-    return signals
+## Existing containerized core
+
+Start OrbStack with its Docker context available, then run:
+
+```sh
+./alphapulse setup
+./alphapulse up
+./alphapulse test
+./alphapulse audit
+./alphapulse down
 ```
 
-### Infrastructure as Code (Terraform)
-Modular design for multi-cloud deployment.
-```hcl
-# infra/terraform/modules/compute/main.tf
-resource "aws_instance" "app_server" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = var.subnet_id
-  # ... configuration ...
-  tags = {
-    Name        = "${var.environment}-alphapulse-app"
-    ManagedBy   = "Terraform"
-  }
-}
-```
+`setup` creates private `.env.orbstack.local` settings and builds images. `down` preserves database/model volumes. Ports are loopback-only; defaults are API 8000 and frontend 3000. Do not commit generated settings. The command keeps the `alphapulse-local` project and existing named volumes stable across the repository rename; no automatic volume deletion/migration is needed.
 
----
+`./alphapulse agent` starts the separate containerized Ollama monitoring PoC and may download a model. It uses synthetic crypto fixtures and is not the new investment assistant. [Existing detailed local instructions](local/README.zh-TW.md) and [prior verification](local/VERIFICATION.zh-TW.md) retain their scope.
 
-## 🛠️ Development Workflow
+## Actual version authorities
 
-### Making Changes
-1. **Feature Branching**: `git checkout -b feature/your-feature`
-2. **Local Testing**: `pytest tests/`
-3. **Quality Checks**: `black .` and `mypy src/`
-4. **Terraform Validation**: `terraform fmt` and `terraform validate`
-5. **CI/CD**: Push to GitHub and wait for Actions to pass.
+- API/test images: `infra/local/requirements-api.txt`, `infra/local/requirements-test.txt`, and Dockerfiles.
+- Frontend: `frontend/package.json` and `frontend/package-lock.json`; use `npm ci`, not an unconstrained install.
+- Full historical ML environment: root/training/Airflow requirements and `src/setup.py`; dependency compatibility remains separate from the local core.
+- Future Java implementation must add its own build/wrapper and pinned supported versions before any service is described as available.
 
-### Local Testing & Debugging
-- **Run all tests**: `pytest tests/`
-- **View logs**: `docker-compose logs -f fastapi`
-- **Access DB**: `docker-compose exec postgres psql -U postgres -d alphapulse`
+Do not initialize the optional private submodule for ordinary work. The public core and new domain checks must remain independent of private content. Cloud workflows are not a local development requirement.
+
+## Change workflow
+
+Locate the relevant authority in INDEX, record unresolved business choices, change the smallest complete slice, synchronize rules/contracts/evidence, run scoped tests, and inspect `git diff --check`. Follow [testing](TESTING.md) for the difference between pure-domain, API, DB and operating evidence.

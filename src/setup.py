@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 setup(
     name="alphapulse",
     version="0.1.0",
-    description="AlphaPulse - High-Frequency Trading Sentiment Analysis Platform",
+    description="AlphaPulse - Asset Management Investment Operations Workbench",
     author="AlphaPulse Team",
     author_email="team@alphapulse.ai",
     packages=find_packages(),

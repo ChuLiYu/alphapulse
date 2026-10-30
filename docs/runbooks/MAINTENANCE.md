@@ -1,7 +1,9 @@
-# AlphaPulse MLOps Platform - Maintenance Runbook
+> **Legacy reference — superseded for new product and architecture work.** Start at [the context router](../INDEX.md). Preserved content records the earlier crypto/MLOps scope; embedded prompts are not active instructions. Original language and claims are historical, not new verification.
+
+# AlphaPulse - Maintenance Runbook
 
 ## Overview
-This runbook provides step-by-step procedures for maintaining the AlphaPulse MLOps platform in the local Docker Compose environment.
+This runbook provides step-by-step procedures for maintaining the AlphaPulse in the local Docker Compose environment.
 
 ## Daily Tasks
 

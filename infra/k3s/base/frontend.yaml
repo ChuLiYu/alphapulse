@@ -17,7 +17,7 @@ spec:
       - name: regcred
       containers:
       - name: frontend
-        image: ghcr.io/chuliyu/alphapulse-mlops-platform/frontend:latest
+        image: ghcr.io/chuliyu/alphapulse/frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80

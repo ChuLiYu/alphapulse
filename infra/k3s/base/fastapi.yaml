@@ -17,7 +17,7 @@ spec:
       - name: regcred
       containers:
       - name: fastapi
-        image: ghcr.io/chuliyu/alphapulse-mlops-platform/fastapi:latest
+        image: ghcr.io/chuliyu/alphapulse/fastapi:latest
         imagePullPolicy: Always
         env:
         - name: DATABASE_URL

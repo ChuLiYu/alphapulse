@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# AlphaPulse MLOps Platform - Smoke Tests
+# AlphaPulse - Smoke Tests
 # Basic functionality tests for the local Docker Compose environment
 
 set -e

@@ -42,6 +42,6 @@ variable "common_tags" {
   default = {
     Project    = "AlphaPulse"
     ManagedBy  = "Terraform"
-    Repository = "https://github.com/your-org/alphapulse-mlops-platform"
+    Repository = "https://github.com/ChuLiYu/alphapulse"
   }
 }

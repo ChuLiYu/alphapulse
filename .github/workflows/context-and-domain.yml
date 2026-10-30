@@ -1,0 +1,21 @@
+name: Context and investment domain
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, 'refactor/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  context-domain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/verify_context.py
+      - run: python -m unittest discover -s tests/context -v
+      - run: PYTHONPATH=src python -m unittest discover -s tests/portfolio -v

@@ -17,7 +17,7 @@ spec:
       - name: regcred
       containers:
       - name: trainer
-        image: ghcr.io/chuliyu/alphapulse-mlops-platform/trainer:latest
+        image: ghcr.io/chuliyu/alphapulse/trainer:latest
         imagePullPolicy: Always
         env:
         - name: DATABASE_URL

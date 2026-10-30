@@ -13,6 +13,7 @@ RUN python -m pip install --no-cache-dir --upgrade pip==26.2.1 \
     && python -m pip install --no-cache-dir -r /tmp/requirements.txt
 COPY src/alphapulse /app/src/alphapulse
 COPY tests/agent_poc /app/tests/agent_poc
+COPY tests/portfolio /app/tests/portfolio
 COPY tests/security /app/tests/security
 COPY tests/local /app/tests/local
 COPY infra/scripts/generate_k3s_secrets.sh /app/infra/scripts/generate_k3s_secrets.sh

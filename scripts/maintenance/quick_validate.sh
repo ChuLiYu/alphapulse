@@ -1,7 +1,7 @@
 #!/bin/bash
-# Quick validation script for AlphaPulse MLOps platform
+# Quick validation script for AlphaPulse
 
-echo "🔍 AlphaPulse MLOps Platform - Quick Validation"
+echo "🔍 AlphaPulse - Quick Validation"
 echo "================================================"
 echo ""
 

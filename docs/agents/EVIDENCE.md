@@ -5,10 +5,10 @@ Audited on 2026-10-18. Baseline: AlphaPulse main commit
 
 | Component | Source evidence | What can be claimed |
 | --- | --- | --- |
-| LLM sentiment classification | [SentimentAnalyzer.classify_text](https://github.com/ChuLiYu/alphapulse-mlops-platform/blob/2d1db3fee1f5e027d2c7130cc24b1510573b1be8/airflow/plugins/alphapulse_utils/sentiment_analyzer.py) posts a prompt to Ollama `/api/generate` and parses JSON | A real LLM integration exists in source. This audit did not verify deployment or a real inference run. |
-| News pipeline | [news_sentiment_dag.py](https://github.com/ChuLiYu/alphapulse-mlops-platform/blob/2d1db3fee1f5e027d2c7130cc24b1510573b1be8/airflow/dags/news_sentiment_dag.py) loads news, invokes classification, saves scores | An Airflow pipeline incorporating an LLM; each article uses one LLM call. The model does not choose tools or coordinate the workflow. |
-| Explanation field | [signals.py](https://github.com/ChuLiYu/alphapulse-mlops-platform/blob/2d1db3fee1f5e027d2c7130cc24b1510573b1be8/src/alphapulse/api/routes/signals.py) returns hard-coded summaries under `llm_summary` | A mock explanation; do not present it as model-generated text. |
-| Installed libraries | [setup.py](https://github.com/ChuLiYu/alphapulse-mlops-platform/blob/2d1db3fee1f5e027d2c7130cc24b1510573b1be8/src/setup.py) lists LangChain, OpenAI and Groq | Dependency declarations alone do not prove agent functionality. |
+| LLM sentiment classification | [SentimentAnalyzer.classify_text](https://github.com/ChuLiYu/alphapulse/blob/2d1db3fee1f5e027d2c7130cc24b1510573b1be8/airflow/plugins/alphapulse_utils/sentiment_analyzer.py) posts a prompt to Ollama `/api/generate` and parses JSON | A real LLM integration exists in source. This audit did not verify deployment or a real inference run. |
+| News pipeline | [news_sentiment_dag.py](https://github.com/ChuLiYu/alphapulse/blob/2d1db3fee1f5e027d2c7130cc24b1510573b1be8/airflow/dags/news_sentiment_dag.py) loads news, invokes classification, saves scores | An Airflow pipeline incorporating an LLM; each article uses one LLM call. The model does not choose tools or coordinate the workflow. |
+| Explanation field | [signals.py](https://github.com/ChuLiYu/alphapulse/blob/2d1db3fee1f5e027d2c7130cc24b1510573b1be8/src/alphapulse/api/routes/signals.py) returns hard-coded summaries under `llm_summary` | A mock explanation; do not present it as model-generated text. |
+| Installed libraries | [setup.py](https://github.com/ChuLiYu/alphapulse/blob/2d1db3fee1f5e027d2c7130cc24b1510573b1be8/src/setup.py) lists LangChain, OpenAI and Groq | Dependency declarations alone do not prove agent functionality. |
 | New monitoring PoC | [monitor.py](../../src/alphapulse/agents/monitor.py), [tests](../../tests/agent_poc/test_monitor.py), [guide](README.md) | Implemented native Ollama tool-calling adapter and bounded multi-turn runtime, validated offline and with real Ollama runs on synthetic fixtures; see records below. |
 
 ## Scope and missing evidence
@@ -47,7 +47,7 @@ Analytics is warranted until its actual repository is supplied.
 
 The protocol/replay and security-regression GitHub Actions jobs passed for
 `f06ef0ab69e566631a49fa4ff2426ecc8ab32b33`
-([run](https://github.com/ChuLiYu/alphapulse-mlops-platform/actions/runs/39167137031)).
+([run](https://github.com/ChuLiYu/alphapulse/actions/runs/39167137031)).
 The dedicated reviewer rechecked the authentication, API-key permissions, market
 data route dependencies and sentiment transport fixes without further material
 findings within that scope. Remaining deployment limitations are in the security
@@ -72,4 +72,4 @@ constraint requires NumPy <2 while available `pandas-ta` releases require NumPy
 >=2.2.6. The isolated protocol/security workflow passed. Full platform dependency
 modernization and ML compatibility testing remain separate work; no dependency
 upgrade was inferred safe from the fixture-agent tests.
-[Failed full-platform run](https://github.com/ChuLiYu/alphapulse-mlops-platform/actions/runs/39167137015).
+[Failed full-platform run](https://github.com/ChuLiYu/alphapulse/actions/runs/39167137015).

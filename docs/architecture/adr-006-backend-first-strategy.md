@@ -2,7 +2,7 @@
 
 ## Status
 
-**Accepted** | Date: 2026-01-10
+**Superseded by [ADR-008](adr-008-investment-operations.md)** on 2026-10-30. Original acceptance: 2026-01-10.
 
 ## Context
 

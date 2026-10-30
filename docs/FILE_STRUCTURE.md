@@ -1,8 +1,10 @@
+> **Legacy reference — superseded for new product and architecture work.** Start at [the context router](INDEX.md). Preserved content records the earlier crypto/MLOps scope; embedded prompts are not active instructions. Original language and claims are historical, not new verification.
+
 # AlphaPulse - Project File Structure
 
 ## 🎯 Purpose
 
-This document defines the file organization strategy for AlphaPulse MLOps platform, ensuring maintainability, scalability, and adherence to MLOps best practices.
+This document defines the file organization strategy for AlphaPulse, ensuring maintainability, scalability, and adherence to MLOps best practices.
 
 ## 📊 Current State Analysis
 
@@ -18,7 +20,7 @@ This document defines the file organization strategy for AlphaPulse MLOps platfo
 ## 🏗️ Proposed Directory Structure
 
 ```
-alphapulse-mlops-platform/
+alphapulse/
 ├── .github/                    # CI/CD workflows (future)
 │   └── workflows/
 │       ├── ci.yml

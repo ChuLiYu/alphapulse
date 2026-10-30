@@ -1,8 +1,10 @@
+> **Legacy reference — superseded for new product and architecture work.** Start at [the context router](../INDEX.md). Preserved content records the earlier crypto/MLOps scope; embedded prompts are not active instructions. Original language and claims are historical, not new verification.
+
 # Production Web UI & Access Strategy
 
 ## 1. Overview
 
-This document defines the strategy for exposing and securing the Web User Interfaces (UIs) and API endpoints for the AlphaPulse MLOps platform in the production environment (Oracle Cloud + K3s).
+This document defines the strategy for exposing and securing the Web User Interfaces (UIs) and API endpoints for the AlphaPulse in the production environment (Oracle Cloud + K3s).
 
 **Core Principle**: Minimize resource usage and attack surface by using a **Single Ingress Controller (Traefik)** with **Path-Based Routing** (Relative Paths) under a single domain.
 

@@ -1,3 +1,5 @@
+> **Legacy reference — superseded for new product and architecture work.** Start at [the context router](../INDEX.md). Preserved content records the earlier crypto/MLOps scope; embedded prompts are not active instructions. Original language and claims are historical, not new verification.
+
 # AlphaPulse — WealthTech DE Repositioning & Refactor Prompt
 
 > **給 AI Agent 的指令文檔**
@@ -1085,7 +1087,7 @@ export function DemoModeBanner() {
         real trades. No backend.
       </span>
       <a
-        href="https://github.com/ChuLiYu/alphapulse-mlops-platform"
+        href="https://github.com/ChuLiYu/alphapulse"
         target="_blank"
         rel="noopener noreferrer"
         style={{ color: "#64ffda", textDecoration: "none" }}

@@ -1,5 +1,7 @@
 # Architecture Decision Records (ADR)
 
+Current target: [investment operations architecture](target.md). Product positioning in ADR-006 is superseded by ADR-008; earlier hardware/cross-cloud decisions are historical context, not current deployment requirements.
+
 ## Purpose
 
 This directory contains Architecture Decision Records (ADRs) documenting significant architectural decisions made during the AlphaPulse project.
@@ -11,8 +13,10 @@ This directory contains Architecture Decision Records (ADRs) documenting signifi
 | [ADR-003](adr-003-training-hardware-evaluation.md) | Training Hardware Evaluation               | Accepted   | 2026-01-XX |
 | [ADR-004](adr-004-testing-framework-strategy.md)   | Testing Framework Strategy                 | Accepted   | 2026-01-XX |
 | [ADR-005](adr-005-mlops-first-strategy.md)         | MLOps-First Strategy (pandas-ta vs Custom) | Superseded | 2026-01-10 |
-| [ADR-006](adr-006-backend-first-strategy.md)       | Backend-First Strategy (Pivot from MLOps)  | Accepted   | 2026-01-10 |
+| [ADR-006](adr-006-backend-first-strategy.md)       | Backend-First Strategy (Pivot from MLOps)  | Superseded | 2026-01-10 |
 | [ADR-007](adr-007-cross-cloud-strategy.md)         | Cross-Cloud Strategy (Abstractions)        | Proposed   | 2026-01-10 |
+
+| [ADR-008](adr-008-investment-operations.md) | Investment operations focus and incremental architecture | Accepted direction; staged implementation | 2026-10-30 |
 
 **Note**: ADR-005 was superseded by ADR-006 due to strategic pivot from MLOps to Backend Infrastructure focus.
 

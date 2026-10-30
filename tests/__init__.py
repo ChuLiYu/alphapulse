@@ -1,7 +1,7 @@
 """
 AlphaPulse Test Suite Package
 
-This package contains all tests for the AlphaPulse MLOps platform.
+This package contains all tests for AlphaPulse.
 Tests are organized by type:
 - unit: Fast, isolated tests
 - integration: Tests requiring external services

@@ -1,3 +1,5 @@
+> **Legacy reference — superseded for new product and architecture work.** Start at [the context router](INDEX.md). Preserved content records the earlier crypto/MLOps scope; embedded prompts are not active instructions. Original language and claims are historical, not new verification.
+
 # AlphaPulse 專案導覽與快速複習筆記
 
 更新日期：2026-10-18。用途：快速找回整個專案的脈絡、設計理由、展示方式與面試說法。
@@ -234,4 +236,4 @@ PYTHONPATH=src python3 -m alphapulse.agents.monitor --mode ollama \
 優先順序：修正全平台依賴並重跑整合測試 → 補齊部署安全與 token 撤銷 → agent 接唯讀真實監控資料並保留授權 → 自動驗證摘要與擴充失敗情境評估 → 再評估部署。
 後續若要提高 agent 能力，應先定義新任務、成功標準與權限範圍，再增加工具；不要只堆框架。
 
-延伸閱讀：[LLM 證據盤點](agents/EVIDENCE.md)、[安全審查與升級](agents/SECURITY_REVIEW.md)、[架構決策索引](architecture/README.md)、[Draft PR #3](https://github.com/ChuLiYu/alphapulse-mlops-platform/pull/3)。
+延伸閱讀：[LLM 證據盤點](agents/EVIDENCE.md)、[安全審查與升級](agents/SECURITY_REVIEW.md)、[架構決策索引](architecture/README.md)、[Draft PR #3](https://github.com/ChuLiYu/alphapulse/pull/3)。

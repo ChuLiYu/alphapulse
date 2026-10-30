@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# AlphaPulse MLOps Platform - Initialization Script
+# AlphaPulse - Initialization Script
 # Idempotent: safe to run multiple times
 
 set -e
 
-echo "🚀 AlphaPulse MLOps Platform Initialization"
+echo "🚀 AlphaPulse Initialization"
 echo "=========================================="
 
 # Check prerequisites

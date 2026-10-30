@@ -30,7 +30,7 @@ COMPOSE_FILE="infra/docker-compose.yml"
 
 print_banner() {
     echo -e "${BLUE}════════════════════════════════════════════════════════════════${NC}"
-    echo -e "${GREEN}  AlphaPulse MLOps Platform${NC}"
+    echo -e "${GREEN}  AlphaPulse${NC}"
     echo -e "${BLUE}════════════════════════════════════════════════════════════════${NC}"
 }
 

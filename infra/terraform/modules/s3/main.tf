@@ -18,7 +18,7 @@ resource "aws_s3_bucket" "ml_artifacts" {
     Name        = "alphapulse-ml-artifacts"
     Environment = var.environment
     Project     = "AlphaPulse"
-    CostCenter  = "mlops-platform"
+    CostCenter  = "alphapulse"
   }
 }
 

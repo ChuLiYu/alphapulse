@@ -1,117 +1,39 @@
-# AlphaPulse - Backend Infrastructure & MLOps Platform
+# Delivery roadmap and decision backlog
 
-## Project Overview
+[繁中閱讀摘要](zh-TW/overview.md) — selected concepts; the complete English specification remains authoritative.
 
-AlphaPulse is a **cost-optimized backend infrastructure** for cryptocurrency trading signal systems. This project demonstrates **Infrastructure Engineering** and **MLOps** skills targeting **Backend/DevOps roles at Fintech companies**.
+This is the work/status authority. Dates are not delivery promises. “Implemented” means source exists; “verified” requires the stated run. Existing baseline results are preserved separately from new work.
 
-**Current Status (Jan 12, 2026)**: Phase 4.5 Completed (Container Separation & Testing Refactor). Transitioned to Airflow for Orchestration.
+| Phase | Outcome | Acceptance / evidence | Current state |
+|---|---|---|---|
+| 0: identity and context | Rename, branch, English router, authority map, ADR, legacy classification | Current URLs/settings, link/boundary check and reviewable Git diff | Implemented in this branch |
+| 1a: domain seed | Offline synthetic multi-currency valuation with fail-closed quality | VAL-01–05 golden, rounding, invalid/missing/stale/future data tests | Implemented; see current verification record |
+| 1b: investable book | Versioned instruments/transactions/marks, trade-date holdings, cash reconciliation | PostgreSQL migrations and constraints; duplicate/replay/correction tests; independent statement breaks; typed authenticated API and operations UI | Planned |
+| 2: investment analysis | Exposure, benchmark-aligned performance, deterministic stresses | PERF-01/RISK-01 examples, cash flows/dividends, missing history, scenario explainability and reconciliation | Planned |
+| 3: controlled proposals | Java/Spring order workflow, maker-checker, mandate evidence and audit | ORDER-01–03/CTRL-01; portfolio ACL, self-approval rejection, concurrent stale-version rejection, atomic persistence and idempotent retries | Planned; Spring version pin at implementation |
+| 4: event delivery and AI | Outbox/Kafka consumers if justified; read-only evidence-grounded explanations | Replay/deduplication/DLQ tests; AI authorization, citation, numerical and abstention evaluations | Planned; existing Ollama PoC stays isolated |
+| 5: operating evidence | Deployable cloud profile, telemetry and recovery | Measured load profile, SLO report, backup restore, migration rollback and incident drill with reviewed findings | Proposed; cloud budget/provider pending |
 
-## Strategic Direction
+## Refactor order and compatibility
 
-- **Backend-First Strategy**: Prioritizing Type Safety (Decimal), IaC (Terraform), and CI/CD over complex ML model research.
-- **Container Separation**: Decoupled architecture with specialized containers for ETL (Airflow) and Training (Trainer API).
-- **Hybrid Multi-Cloud**: Oracle Cloud (Compute) + AWS (Storage) for 100% cost savings ($0.00/month).
-- **Fintech-Grade Quality**: 100% Decimal precision, comprehensive testing (Unit/Integration/E2E), and drift monitoring.
+Preserve existing local Compose/CLI and security tests while introducing domain modules. Add persisted investment data through migrations; do not rename crypto tables into a ledger. Add a versioned portfolio API and UI only after input provenance and portfolio authorization exist. Deprecate the legacy signals dashboard explicitly; never replace a real failure with demo values.
 
----
+Extract an approval service only when it owns a complete transaction and can operate under dependency failure. Keep a modular implementation until that point. Publish new container images before using renamed cloud manifests. The public repository name changes immediately, but these branch changes are not deployed and existing GHCR packages have not been migrated.
 
-## System Architecture
+## Decisions that block later work
 
-### 1. Infrastructure (IaC)
-- **Terraform**: Modular setup for AWS (S3, IAM) and Oracle Cloud (Compute).
-- **Docker Compose**: Orchestration for local and production environments.
-- **Container Strategy**:
-    - `alphapulse-airflow-*`: Robust orchestration for data pipelines (Webserver, Scheduler).
-    - `trainer`: Dedicated Training API (Scikit-learn, XGBoost) to isolate heavy dependencies.
-    - `fastapi`: Serving Layer for predictions and data access.
-    - `mlflow`: Experiment tracking.
-    - `postgres`: Centralized storage.
+| Decision | Evidence needed / impact | Responsible perspective |
+|---|---|---|
+| Market calendar and corporate actions | Exchange/vendor policy; affects holdings and return correctness | Domain/data |
+| Mandate examples and override policy | Explicit educational thresholds and reviewer authority; affects approval tests | Product/risk |
+| Settlement, cash flow and fee conventions | Selected instruments and business rules; affects accounting and TWR | Domain |
+| Data source and benchmark license | Permitted use, retention and reproducibility; synthetic fixtures remain default | Product/data |
+| OIDC and portfolio access model | Identity provider, subject lifecycle, role/portfolio grants | Security |
+| Cloud profile and budget | Provider/region, residency needs, target workload and monthly budget | Maintainer/operations |
+| Service objectives | Workload, freshness windows, RPO/RTO and measurement method | Product/operations |
 
-### 2. Backend & Data
-- **FastAPI**: Type-safe REST API with Pydantic models.
-- **PostgreSQL**: Relational storage with strict `DECIMAL` types for financial data.
-- **Apache Airflow**: Orchestrator for data pipelines (Price ingestion, News aggregation, Feature integration).
+These do not block the offline synthetic valuation slice. No legal mandate or production policy is inferred from a job advertisement.
 
-### 3. Machine Learning
-- **Trainer API**: specialized FastAPI service for model training, capable of "Ultra Fast" (Dev) and "Production" (Full CV) modes.
-- **Anti-Overfitting**: Implemented 7-layer protection (CV, Ridge/Lasso, Early Stopping, etc.).
-- **MLflow**: Tracks all experiments, parameters, and artifacts.
+## Next concrete slice
 
----
-
-## Roadmap & Status
-
-### ✅ Phase 1: Infrastructure Foundation
-- [x] Terraform modules for Networking, Compute (Oracle Cloud), and Storage (AWS S3).
-- [x] Hybrid Cloud configuration (Oracle Cloud + AWS).
-- [x] CI/CD Pipelines (GitHub Actions) for Terraform validation.
-
-### ✅ Phase 2: Backend Core
-- [x] FastAPI project setup with strict `Decimal` enforcement.
-- [x] Database schema design with SQLAlchemy.
-- [x] Health check and basic CRUD endpoints.
-- [x] Unit testing suite.
-
-### ✅ Phase 3: Data Pipeline
-- [x] Airflow DAGs for BTC price ingestion.
-- [x] `pandas-ta` integration for 130+ technical indicators.
-- [x] Feature integration pipeline (News + Price + Sentiment).
-- [x] Airflow DAGs for RSS News ingestion (DeepSeek Task).
-
-### ✅ Phase 4: Production Readiness & Monitoring
-- [x] Evidently AI integration for Data Drift detection.
-- [x] Performance testing (API latency, DB throughput).
-- [x] Security hardening (JWT, API Keys).
-
-### ✅ Phase 4.5: Architecture Refactor (Jan 2026)
-- [x] **Container Separation**: Split Orchestration (Airflow) and Trainer (ML).
-- [x] **Testing Framework**: Implemented comprehensive Unit, Integration, and E2E tests.
-- [x] **Trainer Improvements**: Added Cross-Validation, Regularization, and Learning Curves.
-- [x] **Documentation**: Updated architecture guides and reports.
-
-### 🔄 Phase 5: Production Deployment (k3s Migration)
-- [ ] **k3s Cluster Setup**: Provision Oracle Free Tier VM with k3s lightweight Kubernetes.
-- [ ] **Kubernetes Manifests**: Create Deployments, Services, and Ingress for all tiers.
-- [ ] **Persistent Storage**: Configure Local Path Provisioner or OCI Block Volume.
-- [ ] **Secret Management**: Move environment variables to K8s Secrets.
-- [ ] **Oracle Cloud Networking**: Configure VCN, Security Lists, and Public IP.
-
-### 🚀 Phase 5.5: Continuous MLOps (CT/CD)
-- [ ] **CatBoost Integration**: Add CatBoost as a challenger model for better categorical and noise handling.
-- [ ] **Model Promotion Logic**: Automated "Champion/Challenger" staging in MLflow Registry.
-- [ ] **Inference Engine**: Real-time signal generation from the latest production model.
-
-### 💰 Phase 5.6: FinOps & Multi-Cloud Optimization
-- [ ] **Oracle Cloud Migration**: Port k3s cluster to Oracle Always Free ARM64 for $0 compute cost.
-- [ ] **S3 Lifecycle Management**: Automate model archiving to reduce AWS storage costs.
-- [ ] **ARM64 Compatibility**: Optimize Docker images for multi-architecture support (x86_64 and aarch64).
-
-### 📋 Phase 6: Documentation & Portfolio
-- [ ] **Runbooks**: Production operations and disaster recovery.
-- [ ] **Interview Prep**: STAR stories and "Talking Points".
-- [ ] **Demo Video**: 5-minute technical walkthrough.
-
----
-
-## Key Technical Decisions
-
-| Decision | Choice | Rationale |
-| :--- | :--- | :--- |
-| **Compute** | Oracle Cloud Always Free | Zero cost with generous resources (4 OCPUs, 24GB RAM). |
-| **Orchestration** | Airflow + Trainer | Industry standard orchestration + Decoupled training. |
-| **Precision** | `Decimal` | Essential for Fintech to avoid floating-point errors. |
-| **IaC** | Terraform | Industry standard, provider-agnostic. |
-| **CI/CD** | GitHub Actions | "Shift Left" quality with automated testing and linting. |
-
----
-
-## Quick Links
-
-- **Current Tasks**: [`docs/tasks/current_task.md`](docs/tasks/current_task.md)
-- **Refactor Report**: [`docs/reports/REFACTOR_COMPLETE_REPORT.md`](docs/reports/REFACTOR_COMPLETE_REPORT.md)
-- **Trainer Guide**: [`docs/training/ADVANCED_TRAINER_GUIDE.md`](docs/training/ADVANCED_TRAINER_GUIDE.md)
-- **Testing Strategy**: [`docs/testing/COMPREHENSIVE_TESTING_GUIDE.md`](docs/testing/COMPREHENSIVE_TESTING_GUIDE.md)
-
----
-
-**Last Updated**: 2026-01-12
+Deliver phase 1b in one reviewable workflow: import a synthetic transaction file twice, reconstruct positions once, quarantine stale FX, show the reconciliation break, correct the evidence and retain both snapshot versions. Include a PostgreSQL integration test, an authenticated portfolio endpoint, typed UI exception state, and a dated verification record. This is planned work, not already completed by the architecture refactor.

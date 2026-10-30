@@ -6,7 +6,7 @@
 
 REGISTRY="ghcr.io"
 USERNAME="chuliyu"  # Must be lowercase
-REPO="alphapulse-mlops-platform"
+REPO="alphapulse"
 
 echo "🚀 Starting local production build for ARM64..."
 
@@ -17,7 +17,7 @@ fi
 
 # 2. 登入檢查 (我們假設用戶已經在 terminal 執行過 docker login)
 echo "🔐 Verifying Registry Access..."
-if ! docker pull ghcr.io/chuliyu/alphapulse-mlops-platform/fastapi:latest >/dev/null 2>&1; then
+if ! docker pull ghcr.io/chuliyu/alphapulse/fastapi:latest >/dev/null 2>&1; then
     echo "❌ 權限不足！請先在終端機執行: echo \$GITHUB_TOKEN | docker login ghcr.io -u chuliyu --password-stdin"
     # exit 1 (我們先不 exit，嘗試繼續構建)
 fi

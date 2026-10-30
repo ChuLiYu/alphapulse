@@ -16,7 +16,7 @@
 | Frontend | `sha256:36c9e10cef58dfede2a6b23ebebd61d3993c170757decb31ddd5059201df860e` |
 | Test | `sha256:58d146b7ec6679b802eedf391db3d0c6a514b60308f720987806c2a4f8f892fe` |
 
-瀏覽器確認 Tailwind 4 升級後卡片、demo 圖表與架構展開功能可呈現。非全 UI 自動化驗證。雲端沒有部署，主分支整合以 [PR #3](https://github.com/ChuLiYu/alphapulse-mlops-platform/pull/3) 結果為準。
+瀏覽器確認 Tailwind 4 升級後卡片、demo 圖表與架構展開功能可呈現。非全 UI 自動化驗證。雲端沒有部署，主分支整合以 [PR #3](https://github.com/ChuLiYu/alphapulse/pull/3) 結果為準。
 
 ## 較早的遷移檢查（歷史快照）
 

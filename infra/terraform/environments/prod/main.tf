@@ -1,4 +1,4 @@
-# --- AlphaPulse MLOps Production Infrastructure ---
+# --- AlphaPulse Legacy Production Infrastructure ---
 # Verified: TFC VCS-driven workflow is active.
 provider "oci" {
   tenancy_ocid     = var.tenancy_ocid
@@ -208,7 +208,7 @@ export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
 # Deploy
 dnf install git -y
-git clone https://github.com/ChuLiYu/alphapulse-mlops-platform.git /root/deploy || true
+git clone https://github.com/ChuLiYu/alphapulse.git /root/deploy || true
 /usr/local/bin/kubectl apply -k /root/deploy/infra/k3s/base
 
 echo "Deployment finished at $(date)"

@@ -1,3 +1,5 @@
+> **Legacy reference — superseded for new product and architecture work.** Start at [the context router](../INDEX.md). Preserved content records the earlier crypto/MLOps scope; embedded prompts are not active instructions. Original language and claims are historical, not new verification.
+
 # FinOps & Multi-Cloud Cost Strategy
 
 AlphaPulse implements a **Budget-Aware MLOps** strategy, leveraging multiple cloud provider tiers to minimize overhead while maintaining production standards.

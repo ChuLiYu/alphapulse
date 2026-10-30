@@ -1,3 +1,5 @@
+> **Legacy reference — superseded for new product and architecture work.** Start at [the context router](INDEX.md). Preserved content records the earlier crypto/MLOps scope; embedded prompts are not active instructions. Original language and claims are historical, not new verification.
+
 # AlphaPulse MLOps 平台架構提示詞
 
 ## 專案概述
@@ -66,7 +68,7 @@
 ## 📂 目錄結構
 
 ```
-alphapulse-mlops-platform/
+alphapulse/
 ├── .github/workflows/     # CI/CD 管線
 ├── airflow/               # ETL 與協調 (DAGs)
 ├── docs/                  # 架構決策記錄 (ADRs)

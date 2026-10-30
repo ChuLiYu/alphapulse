@@ -30,8 +30,8 @@ signing_key()  # Fail startup rather than serving with a missing signing secret.
 
 # Create FastAPI application
 app = FastAPI(
-    title="AlphaPulse Trading API",
-    description="Backend infrastructure for cryptocurrency trading signal systems",
+    title="AlphaPulse API",
+    description="Investment operations workbench; legacy market-data and signal endpoints remain available",
     version="1.0.0",
     root_path=root_path,
     openapi_url="/api/openapi.json",
@@ -64,9 +64,9 @@ app.json_encoder = decimal_encoder
 async def root():
     """Root endpoint with API information."""
     return {
-        "name": "AlphaPulse Trading API",
+        "name": "AlphaPulse API",
         "version": "1.0.0",
-        "description": "Backend infrastructure for cryptocurrency trading signal systems",
+        "description": "Investment operations workbench; legacy market-data and signal endpoints remain available",
         "docs": "/api/docs",
         "health": "/health",
     }

@@ -1,6 +1,8 @@
+> **Legacy reference — superseded for new product and architecture work.** Start at [the context router](../INDEX.md). Preserved content records the earlier crypto/MLOps scope; embedded prompts are not active instructions. Original language and claims are historical, not new verification.
+
 # 🏛️ AlphaPulse: Core Architecture Decision Records (ADR)
 
-This document summarizes the strategic technical decisions made during the development of the AlphaPulse MLOps platform and the rationale behind them.
+This document summarizes the strategic technical decisions made during the development of the AlphaPulse and the rationale behind them.
 
 ---
 

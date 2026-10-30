@@ -80,7 +80,7 @@ resource "hcloud_server" "main" {
     Environment = var.environment
     Project     = "AlphaPulse"
     Role        = "application-server"
-    CostCenter  = "mlops-platform"
+    CostCenter  = "alphapulse"
   }
 
   # Lifecycle policy

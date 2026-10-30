@@ -205,7 +205,7 @@ write_files:
   - path: /etc/systemd/system/alphapulse.service
     content: |
       [Unit]
-      Description=AlphaPulse MLOps Platform
+      Description=AlphaPulse
       After=docker.service
       Requires=docker.service
 
@@ -232,7 +232,7 @@ runcmd:
   - [
       git,
       clone,
-      "https://github.com/your-org/alphapulse-mlops-platform.git",
+      "https://github.com/ChuLiYu/alphapulse.git",
       "/home/alphapulse/alphapulse",
     ]
 

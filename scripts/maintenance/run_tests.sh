@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run comprehensive test suite for AlphaPulse MLOps platform
+# Run comprehensive test suite for AlphaPulse
 
 set -e
 

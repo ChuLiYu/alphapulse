@@ -2,8 +2,8 @@
 
 英文權威來源：[Target architecture](../architecture/target.md)、[ADR-008](../architecture/adr-008-investment-operations.md)。
 類型：閱讀摘要；涵蓋主要邊界、技術引入理由與限制，不是完整翻譯。
-來源版本：`refactor/asset-management-platform` 分支的未提交草稿，2026-10-30。
-同步狀態：草稿；正式決策、替代方案與完整後果以英文為準。
+來源版本：`2b8de63ea4dcc4bdd152ac66954bff1c6ff5c409`，上述英文來源，2026-10-30 核對。
+同步狀態：已核對（閱讀摘要）；正式決策、替代方案與完整後果以英文為準。
 
 採漸進重構。先把持倉估值整理為不依賴 FastAPI、ORM 或模型的純領域核心，保留舊系統及安全測試，再建立有資料版本、權限與對帳能力的新工作流程。現有加密資產表格不能直接改名當成股票投資帳簿。
 

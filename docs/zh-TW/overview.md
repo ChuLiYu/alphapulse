@@ -2,8 +2,8 @@
 
 英文權威來源：[產品方向](../product/strategy.md)、[領域規格](../domain/investment-operations.md)、[交付計畫](../ROADMAP.md)、[開發指南](../DEVELOPMENT.md)、[Context Router](../INDEX.md)。
 類型：閱讀摘要；涵蓋定位、主要規則、技術責任、操作入口，不是完整翻譯。
-來源版本：`refactor/asset-management-platform` 分支的未提交草稿，2026-10-30。
-同步狀態：草稿；以英文完整規格確認例外、數值限制與驗收條件。
+來源版本：`2b8de63ea4dcc4bdd152ac66954bff1c6ff5c409`，上述英文來源，2026-10-30 核對。
+同步狀態：已核對（閱讀摘要）；以英文完整規格確認例外、數值限制與驗收條件。
 
 ## 專案要證明什麼
 
